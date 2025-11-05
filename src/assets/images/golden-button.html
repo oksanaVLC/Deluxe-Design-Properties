@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gliding Golden Button</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: #111;
+        font-family: sans-serif;
+      }
+
+      .glow-btn {
+        position: relative;
+        padding: 1rem 2.5rem;
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: #111;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        background: linear-gradient(90deg, #bfa235, #fbe68f, #bfa235);
+        background-size: 200%;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        overflow: hidden;
+        transition: all 0.4s ease;
+      }
+
+      .glow-btn::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          120deg,
+          rgba(255, 255, 255, 0.3),
+          rgba(255, 255, 255, 0.1),
+          rgba(255, 255, 255, 0.3)
+        );
+        transform: rotate(45deg) translateX(-100%);
+        transition: transform 0.5s ease;
+      }
+
+      .glow-btn:hover::before {
+        transform: rotate(45deg) translateX(100%);
+      }
+
+      .glow-btn:hover {
+        background-position: 100%;
+        box-shadow: 0 0 20px #fbe68f, 0 0 40px #bfa235;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="glow-btn">Hover Me</button>
+  </body>
+</html>

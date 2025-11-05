@@ -1,0 +1,57 @@
+<footer class="footer">
+  <!-- Navegación -->
+  <nav class="footer__nav">
+    <a href="#" class="footer__link">Home</a>
+    <a href="#" class="footer__link">About</a>
+    <a href="#" class="footer__link">Projects</a>
+    <a href="#" class="footer__link">Contact</a>
+  </nav>
+
+  <!-- Sección principal: Contacto y formulario -->
+  <div class="footer__content">
+    <!-- Contacto izquierda -->
+    <div class="footer__contact">
+      <img
+        class="animate__animated animate__swing animate__once"
+        src="/src/assets/images/keys.webp"
+        alt="keys"
+        style="width: 100px"
+      />
+      <h3 class="footer__title">Contact us</h3>
+      <p class="footer__info">E-mail: info@deluxedesign.com</p>
+      <p class="footer__info">Phone: +34 600 123 456</p>
+      <p class="footer__info">Address: Valencia, Spain</p>
+    </div>
+
+    <!-- Formulario derecha -->
+    <div class="footer__form-section">
+      <p class="footer__form-text" id="form-desc">
+        ¿Quieres que te enviemos la ficha completa del proyecto? Introduzca su
+        email:
+      </p>
+
+      <form class="footer__form" aria-labelledby="form-desc">
+        <label for="email" class="visually-hidden">Correo electrónico</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="E-mail"
+          aria-required="true"
+          required
+          class="footer__input"
+        />
+        <button type="submit" class="footer__button">¡Quiero!</button>
+      </form>
+    </div>
+  </div>
+
+  <hr class="footer__divider" />
+
+  <div class="footer__bottom">
+    <p class="footer__copy">
+      ©2025 Deluxe Design Properties. All rights reserved.
+      <a href="#" class="footer__policy">Privacy policy</a>
+    </p>
+  </div>
+</footer>
