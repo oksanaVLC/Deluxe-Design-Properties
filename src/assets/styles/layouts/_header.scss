@@ -89,7 +89,7 @@
         255,
         0.95
       ); // fondo blanco semitransparente
-      backdrop-filter: blur(10px); // puedes quitarlo si no quieres blur
+      backdrop-filter: blur(10px);
       z-index: 999;
       transition: 0.3s ease;
 
@@ -156,14 +156,14 @@
   overflow: hidden;
   z-index: 0;
 
-  // 🔹 Overlay oscuro
+  /* 🔹 Overlay oscuro
   &::before {
     content: "";
     position: absolute;
     inset: 0;
     background-color: rgba(0, 0, 0, 0.3); // negro semi-transparente
     z-index: 1;
-  }
+  }*/
 
   &__video {
     position: absolute;
