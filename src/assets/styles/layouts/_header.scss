@@ -156,14 +156,13 @@
   overflow: hidden;
   z-index: 0;
 
-  /* 🔹 Overlay oscuro
-  &::before {
+  🔹 Overlay oscuro &::before {
     content: "";
     position: absolute;
     inset: 0;
     background-color: rgba(0, 0, 0, 0.3); // negro semi-transparente
     z-index: 1;
-  }*/
+  }
 
   &__video {
     position: absolute;
