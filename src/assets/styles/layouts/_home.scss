@@ -9,7 +9,7 @@
   &__title {
     font-size: 1.8em;
     margin: 2rem 0;
-    color: #051041;
+    color: #222;
     display: flex;
     justify-content: center;
   }
@@ -454,7 +454,7 @@
   cursor: ew-resize;
   width: 40px;
   height: 40px;
-  background-color: #2196f3;
+
   opacity: 0.7;
   border-radius: 50%;
   border: 2px solid #fff;
@@ -523,7 +523,7 @@
 
 .antesdespues__texto ul li::before {
   content: "◆";
-  color: #6200ff;
+  color: #222;
   font-size: 1.2rem;
   margin-right: 0.8rem;
 }

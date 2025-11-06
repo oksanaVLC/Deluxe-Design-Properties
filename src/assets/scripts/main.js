@@ -17,26 +17,59 @@
   console.log(`Hello, ${university}!`);
 })();*/
 
-// Menú hamburguesa
+// --- Menú hamburguesa ---
+
+// Al hacer clic en el botón del menú
 const menuBtn = document.querySelector(".header__menu-button");
 const navigation = document.querySelector(".header__navigation");
-const logoBlack = document.querySelector(".header__logo--black"); // mi logo negro
+const logoBlack = document.querySelector(".header__logo--black");
+const logoWhite = document.querySelector(".header__logo--white");
+const logoWhiteImg = logoWhite.querySelector("img");
 
 menuBtn.addEventListener("click", () => {
-  menuBtn.classList.toggle("active");
+  const isActive = menuBtn.classList.toggle("active");
   navigation.classList.toggle("active");
-  logoBlack.classList.toggle("active"); // mostrar/ocultar logo negro
+
+  setTimeout(() => {
+    navigation.classList.toggle("show", isActive);
+  }, 50);
+
+  if (isActive) {
+    logoBlack.style.display = "none";
+    logoWhite.style.display = "block";
+  } else {
+    logoBlack.style.display = "block";
+    logoWhite.style.display = "none";
+  }
 });
 
-// Cerrar el menú al hacer clic en un enlace
+// --- Cerrar el menú al hacer clic en un enlace ---
 const navLinks = document.querySelectorAll(".header__navigation-link");
 
 navLinks.forEach((link) => {
   link.addEventListener("click", () => {
     menuBtn.classList.remove("active");
-    navigation.classList.remove("active");
-    logoBlack.classList.remove("active"); // ocultar logo negro
+    navigation.classList.remove("show", "active");
+    logoBlack.style.display = "block";
+    logoWhite.style.display = "none";
   });
+});
+
+/* --- Aparece el fondo de nav al hacer scroll --- */
+window.addEventListener("scroll", () => {
+  const header = document.querySelector(".header");
+
+  if (window.scrollY > 50) {
+    header.classList.add("scrolled");
+
+    // cambiar imagen blanca por negra
+    logoWhiteImg.src = "/src/assets/images/logo-black.png";
+  } else {
+    header.classList.remove("scrolled");
+
+    // volver al logo blanco original
+    logoWhiteImg.src = "/src/assets/images/logo-white.png";
+  }
 });
 
 // Slider
