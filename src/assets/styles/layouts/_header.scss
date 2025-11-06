@@ -374,7 +374,7 @@
 
     &:hover {
       transform: scale(1.2);
-      color: lighten(v.$color-gold, 10%);
+      color: color.adjust(v.$color-gold, $lightness: 10%);
     }
   }
 }
