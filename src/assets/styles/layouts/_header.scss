@@ -156,11 +156,11 @@
   overflow: hidden;
   z-index: 0;
 
-  🔹 Overlay oscuro &::before {
+  &::before {
     content: "";
     position: absolute;
     inset: 0;
-    background-color: rgba(0, 0, 0, 0.3); // negro semi-transparente
+    background-color: rgba(0, 0, 0, 0.2);
     z-index: 1;
   }
 
