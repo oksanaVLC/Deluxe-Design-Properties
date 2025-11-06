@@ -3,7 +3,7 @@
 
 .footer {
   background-color: #222222;
-  color: #e6d198;
+  color: #fff;
   padding: 1rem 12rem;
 
   &__nav {
@@ -15,7 +15,7 @@
   }
 
   &__link {
-    color: #e6d198;
+    color: #fff;
     text-decoration: none;
     font-weight: 500;
     transition: 0.3s;
@@ -48,7 +48,7 @@
 
   &__info {
     margin: 5px 0;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
   & .footer__divider {
     border: none;
@@ -116,7 +116,7 @@
   }
 
   &__policy {
-    color: #e6d198;
+    color: #fff;
     text-decoration: none;
     margin-left: 8px;
 

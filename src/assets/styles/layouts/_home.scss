@@ -7,8 +7,8 @@
   text-align: center;
 
   &__title {
-    font-size: 1.8em;
-    margin: 2rem 0;
+    font-size: 2rem;
+    margin: 1.5rem 0;
     color: #222;
     display: flex;
     justify-content: center;
@@ -72,6 +72,56 @@
       color: #666;
       line-height: 1.4;
     }
+  }
+
+  /*Antes-Después texto*/
+  .antesdespues__layout {
+    width: 90%;
+    margin: 0 auto;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: nowrap;
+    margin-top: 2rem;
+    text-align: left;
+  }
+  .antesdespues__texto ul li {
+    line-height: 2.8rem;
+    font-size: 1.7rem;
+  }
+
+  @media (max-width: 1024px) {
+    .antesdespues__layout {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .antesdespues__texto ul li {
+      line-height: 2rem;
+      font-size: 1.5rem;
+    }
+  }
+
+  .antesdespues__texto ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+  }
+
+  .antesdespues__texto ul li::before {
+    content: "◆";
+    color: #222;
+    font-size: 1.2rem;
+    margin-right: 0.8rem;
+  }
+
+  .antesdespues__texto li strong {
+    font-family: "Tangerine", cursive;
+    font-weight: 700;
+    font-size: 2.3rem;
   }
 
   @media (max-width: 1180px) {
@@ -173,7 +223,6 @@
     color: #fff;
     text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
 
-    // Para que el contenido no quede fuera en pantallas pequeñas
     @media (max-width: 768px) {
       font-size: 1.5rem;
       padding: 0 1rem;
@@ -181,7 +230,6 @@
     }
   }
 
-  // Botones de navegación
   .swiper-button-prev,
   .swiper-button-next {
     color: #fff;
@@ -482,48 +530,4 @@
     width: 30px;
     height: 30px;
   }
-}
-
-/*Antes-Después texto*/
-.antesdespues__layout {
-  width: 90%;
-  margin: 0 auto;
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-  flex-wrap: nowrap;
-  margin-top: 2rem;
-  text-align: left;
-}
-.antesdespues__texto ul li {
-  line-height: 2.8rem;
-  font-size: 1.7rem;
-}
-
-@media (max-width: 1024px) {
-  .antesdespues__layout {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  .antesdespues__texto ul li {
-    line-height: 2rem;
-    font-size: 1.5rem;
-  }
-}
-
-.antesdespues__texto ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  text-align: left;
-}
-
-.antesdespues__texto ul li::before {
-  content: "◆";
-  color: #222;
-  font-size: 1.2rem;
-  margin-right: 0.8rem;
 }

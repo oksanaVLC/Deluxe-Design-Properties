@@ -21,7 +21,7 @@
       display: none;
 
       img {
-        height: 60px;
+        height: 70px;
         width: auto;
       }
     }
@@ -43,7 +43,7 @@
     &-items {
       display: flex;
       align-items: center;
-      gap: 2rem; // ← aquí se aplica correctamente el espacio entre links
+      gap: 2rem;
     }
 
     &-link {
@@ -139,6 +139,7 @@
   &.scrolled {
     background-color: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* Safari 9+ */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
     .header__navigation-link {
@@ -154,6 +155,15 @@
   height: 60vh;
   overflow: hidden;
   z-index: 0;
+
+  // 🔹 Overlay oscuro
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.3); // negro semi-transparente
+    z-index: 1;
+  }
 
   &__video {
     position: absolute;
@@ -217,23 +227,29 @@
     padding: 1rem 2rem;
     background-color: transparent;
     box-shadow: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
 
-    // 🔹 Mostrar botón de menú
+    // Mostrar botón de menú
     &__menu-button {
       display: block;
       z-index: 1100;
+      width: 40px;
+      height: 40px;
     }
 
-    // 🔹 Mostrar logo negro y ocultar blanco
-    &__logo--white {
+    // Mostrar logo negro y ocultar blanco
+    &__logo--black {
       display: none;
     }
 
-    &__logo--black {
+    &__logo--white {
       display: block;
 
       img {
-        height: 60px;
+        height: 65px;
         width: auto;
       }
     }
@@ -249,8 +265,8 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 2rem;
-      padding: 6rem 1rem;
+      gap: 1rem;
+      padding: 0 1rem;
       opacity: 0;
       transform: translateY(-100%);
       pointer-events: none;
@@ -261,7 +277,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 2.5rem;
+        gap: 0.5rem;
       }
 
       &-link {
@@ -281,7 +297,28 @@
         opacity: 1;
         transform: translateY(0);
         pointer-events: all;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start; // empuja los links hacia arriba
+        align-items: center; // sigue centrando horizontalmente
+        padding-top: 4rem; // opcional, espacio desde el top
       }
+    }
+  }
+
+  // 🔹 Scroll: cambiar visibilidad de logos
+  .header.scrolled {
+    padding: 0 2rem;
+
+    .header__menu-button {
+      filter: invert(1);
+    }
+    .header__logo--white {
+      display: none;
+    }
+
+    .header__logo--black {
+      display: block;
     }
   }
 
@@ -291,7 +328,7 @@
 
   .home__content {
     width: 60%;
-    margin-top: 10rem;
+    margin-top: 6rem;
     margin-left: 2rem;
 
     h1 {
