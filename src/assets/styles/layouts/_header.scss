@@ -354,3 +354,32 @@
     }
   }
 }
+
+.header__social {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 580px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  z-index: 1100; // por encima del menú si hace falta
+
+  .header__social-link {
+    color: v.$color-gold;
+    font-size: 2rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+
+    &:hover {
+      transform: scale(1.2);
+      color: lighten(v.$color-gold, 10%);
+    }
+  }
+}
+
+/* Solo mostrar cuando el menú está activo */
+.header__navigation:not(.active) + .header__social {
+  display: none;
+}
