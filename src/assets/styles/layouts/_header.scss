@@ -10,7 +10,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 12rem;
+  padding: 0 12rem;
   z-index: 1000;
   background-color: rgba(255, 255, 255, 0.95);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -44,6 +44,7 @@
       display: flex;
       align-items: center;
       gap: 2rem;
+      list-style: none;
     }
 
     &-link {
@@ -112,6 +113,9 @@
           }
         }
       }
+      ~ .header__social {
+        display: none;
+      }
     }
   }
 
@@ -145,6 +149,10 @@
     .header__navigation-link {
       color: v.$text-dark !important;
     }
+  }
+
+  &__social {
+    display: none;
   }
 }
 
@@ -206,9 +214,9 @@
     .home__button {
       background: #fff;
       color: #222;
-      padding: 1rem 2rem;
+      padding: 0.8rem 1.2rem;
       border-radius: 0.15rem;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       font-weight: 500;
       display: inline-block;
       transition: 0.2s;
@@ -221,6 +229,42 @@
   }
 }
 
+/* ICONOS HOME - PANTALLAS GRANDES */
+.home__media-icons {
+  position: absolute;
+  top: 50%;
+  right: 2rem;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  z-index: 10;
+
+  .home__icon {
+    color: v.$color-gold;
+    font-size: 2rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+
+    &:hover {
+      transform: scale(1.2);
+      color: color.adjust(v.$color-gold, $lightness: 10%);
+    }
+  }
+
+  .header__social-link {
+    color: v.$color-gold;
+    font-size: 2rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+
+    &:hover {
+      transform: scale(1.2);
+      color: color.adjust(v.$color-gold, $lightness: 10%);
+    }
+  }
+}
+
+/*Key on sidebar*/
+
 /* ------------------- RESPONSIVE ------------------- */
 @media (max-width: 1184px) {
   .header {
@@ -231,6 +275,19 @@
     justify-content: space-between;
     align-items: center;
     height: 60px;
+
+    &.scrolled {
+      .header__logo--white {
+        display: none !important; // ahora sí se aplica
+      }
+      .header__logo--black {
+        display: block !important;
+      }
+
+      .header__menu-button {
+        filter: invert(1) !important;
+      }
+    }
 
     // Mostrar botón de menú
     &__menu-button {
@@ -245,141 +302,180 @@
       display: none;
       img {
         height: 60px;
-        width: auto;
       }
     }
 
     &__logo--white {
-      display: block;
-
+      display: block; // estado base para móviles
       img {
         height: 60px;
-        width: auto;
       }
     }
 
-    // 🔹 Menú desplegable animado
     &__navigation {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
+      width: 100vw;
+      height: 100vh;
       background-color: rgba(255, 255, 255, 0.97);
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
-      gap: 1rem;
-      padding: 0 1rem;
-      opacity: 0;
+      align-items: center;
+
       transform: translateY(-100%);
+      opacity: 0;
       pointer-events: none;
-      transition: all 0.5s ease;
-      z-index: 1000;
+
+      transition: transform 0.35s ease, opacity 0.35s ease;
+
+      &.active {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
 
       &-items {
+        list-style: none;
+        padding: 0;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        gap: 0.5rem;
+        gap: 1.5rem;
       }
 
       &-link {
-        color: v.$text-dark;
         font-size: 2rem;
+        color: v.$text-dark;
         font-weight: 700;
-        text-decoration: none;
-        transition: color 0.3s ease, transform 0.3s ease;
 
         &:hover {
           color: v.$color-gold;
-          transform: scale(1.1);
+          transform: scale(1.08);
         }
       }
+    }
 
-      &.active {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: all;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start; // empuja los links hacia arriba
-        align-items: center; // sigue centrando horizontalmente
-        padding-top: 4rem; // opcional, espacio desde el top
+    .home {
+      height: 60vh;
+    }
+
+    .home__content {
+      width: 60%;
+      margin-top: 6rem;
+      margin-left: 2rem;
+
+      h1 {
+        font-size: 1.6rem;
+      }
+
+      h2 {
+        font-size: 1.3rem;
+      }
+
+      p {
+        font-size: 1.2rem;
+        line-height: 1.6rem;
+      }
+
+      .home__button {
+        font-size: 1.1rem;
+        padding: 0.6rem 1.2rem;
       }
     }
-  }
 
-  // 🔹 Scroll: cambiar visibilidad de logos
-  .header.scrolled {
-    padding: 0 2rem;
-
-    .header__menu-button {
-      filter: invert(1);
-    }
-    .header__logo--white {
+    .home__media-icons {
       display: none;
     }
 
-    .header__logo--black {
-      display: block;
+    /* ICONOS DENTRO DEL MENÚ DESPLEGABLE */
+    .header__navigation.active {
+      .header__social {
+        display: flex; // ahora sí se muestra
+        flex-direction: row;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-top: 2rem;
+
+        .header__social-link {
+          font-size: 2rem;
+          color: v.$color-gold;
+          transition: transform 0.3s ease, color 0.3s ease;
+
+          &:hover {
+            transform: scale(1.2);
+            color: color.adjust(v.$color-gold, $lightness: 10%);
+          }
+        }
+      }
     }
   }
+}
+@media (max-width: 400px) {
+  .header {
+    padding: 0.5rem 1rem; // reduce padding
+  }
 
+  .header__menu-button {
+    width: 35px; // se adapta mejor
+    height: 35px;
+    top: 15px; // posicionamiento seguro
+    right: 15px;
+  }
+}
+
+@media (max-width: 900px) {
   .home {
-    height: 60vh;
+    height: auto; // deja que el contenido determine altura
+    padding: 4rem 1rem; // agrega espacio arriba y abajo
   }
 
   .home__content {
-    width: 60%;
-    margin-top: 6rem;
-    margin-left: 2rem;
+    margin: 0 auto; // elimina margen top grande
+    width: 90%; // ocupa casi todo el ancho
+    text-align: left;
+  }
 
-    h1 {
-      font-size: 1.6rem;
-    }
+  .home__content h1 {
+    font-size: 1.4rem;
+    line-height: 1.4;
+  }
 
-    h2 {
-      font-size: 1.3rem;
-    }
+  .home__content h2 {
+    font-size: 1.2rem;
+  }
 
-    p {
-      font-size: 1.2rem;
-      line-height: 1.6rem;
-    }
+  .home__content p {
+    font-size: 1rem;
+    line-height: 1.4rem;
+    width: 50%;
+  }
 
-    .home__button {
-      font-size: 1.1rem;
-      padding: 0.6rem 1.2rem;
-    }
+  .home__button {
+    font-size: 0.9rem; // botón más compacto
+    padding: 0.4rem;
+    border-radius: 0.1rem;
+    display: inline-block;
+  }
+
+  .home__media-icons {
+    display: none;
   }
 }
 
-.header__social {
-  display: flex;
-  position: absolute;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-top: 580px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.header__navigation {
+  .img-comp__keys {
+    display: none; // oculto por defecto
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 78px;
+    z-index: 2000;
+  }
 
-  z-index: 1100; // por encima del menú si hace falta
-
-  .header__social-link {
-    color: v.$color-gold;
-    font-size: 2rem;
-    transition: transform 0.3s ease, color 0.3s ease;
-
-    &:hover {
-      transform: scale(1.2);
-      color: color.adjust(v.$color-gold, $lightness: 10%);
+  &.active {
+    .img-comp__keys {
+      display: block; // visible solo cuando el menú está activo
     }
   }
-}
-
-/* Solo mostrar cuando el menú está activo */
-.header__navigation:not(.active) + .header__social {
-  display: none;
 }
