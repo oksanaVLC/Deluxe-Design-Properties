@@ -333,7 +333,6 @@
 }
 
 /**********FORMULARIO**********/
-
 .contact {
   color: variables.$text-dark;
   margin-bottom: 2rem;
@@ -345,6 +344,13 @@
     padding: 2.25rem;
     border-radius: variables.$radius;
     box-shadow: variables.$shadow;
+    @media (max-width: 1024px) {
+      padding: 2rem 1.5rem; // reduce horizontalmente
+    }
+
+    @media (max-width: 768px) {
+      padding: 1.5rem 1rem; // más compacto en móviles
+    }
   }
 
   &__title {
